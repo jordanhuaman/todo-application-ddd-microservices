@@ -1,2 +1,9 @@
 .history/
 node_modules/
+.env
+.DS_Store
+npm-debug.log
+.vscode/
+.idea/
+.vscode-test/
+.vscode-test/

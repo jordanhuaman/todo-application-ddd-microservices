@@ -1,0 +1,53 @@
+import { Name } from "drizzle-orm";
+import { Todo } from "../todo/Todo";
+import { Age } from "./Age";
+import { Email } from "./Email";
+import { Gender } from "./Gender";
+
+export class User {
+
+  private readonly id: number;
+  private notes: Set<Todo>;
+  private name: Name;
+  private age: Age;
+  private email: Email;
+  private gender: Gender;
+
+  constructor(
+    id: number,
+    name: string,
+    age: number,
+    email: string,
+    gender: string) {
+
+    this.id = id;
+    this.name = new Name(name);
+    this.age = new Age(age);
+    this.email = new Email(email);
+    this.notes = new Set<Todo>();
+    this.gender = new Gender(gender);
+  }
+  getId(): number {
+    return this.id;
+  }
+
+  getName(): Name {
+    return this.name;
+  }
+
+  getAge(): Age {
+    return this.age;
+  }
+
+  getEmail(): Email {
+    return this.email;
+  }
+
+  getNotes(): Set<Todo> {
+    return this.notes;
+  }
+
+  getGender(): Gender {
+    return this.gender;
+  }
+}

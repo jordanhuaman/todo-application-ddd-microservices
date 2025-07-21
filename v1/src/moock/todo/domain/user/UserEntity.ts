@@ -3,10 +3,11 @@ import { Todo } from "../todo/Todo";
 import { Age } from "./Age";
 import { Email } from "./Email";
 import { Gender } from "./Gender";
+import { Id } from "./Id";
 
 export class User {
 
-  private readonly id: number;
+  private readonly id: Id;
   private notes: Set<Todo>;
   private name: Name;
   private age: Age;
@@ -14,7 +15,7 @@ export class User {
   private gender: Gender;
 
   constructor(
-    id: number,
+    id: Id,
     name: string,
     age: number,
     email: string,
@@ -27,7 +28,7 @@ export class User {
     this.notes = new Set<Todo>();
     this.gender = new Gender(gender);
   }
-  getId(): number {
+  getId(): Id {
     return this.id;
   }
 

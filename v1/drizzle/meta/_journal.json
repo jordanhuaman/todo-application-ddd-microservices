@@ -5,64 +5,8 @@
     {
       "idx": 0,
       "version": "7",
-      "when": 1752899555623,
-      "tag": "0000_overrated_shen",
-      "breakpoints": true
-    },
-    {
-      "idx": 1,
-      "version": "7",
-      "when": 1752899702897,
-      "tag": "0001_fluffy_gargoyle",
-      "breakpoints": true
-    },
-    {
-      "idx": 2,
-      "version": "7",
-      "when": 1752900869450,
-      "tag": "0002_chunky_shocker",
-      "breakpoints": true
-    },
-    {
-      "idx": 3,
-      "version": "7",
-      "when": 1752901538160,
-      "tag": "0003_magical_victor_mancha",
-      "breakpoints": true
-    },
-    {
-      "idx": 4,
-      "version": "7",
-      "when": 1752901708591,
-      "tag": "0004_dark_lilandra",
-      "breakpoints": true
-    },
-    {
-      "idx": 5,
-      "version": "7",
-      "when": 1752951398396,
-      "tag": "0005_odd_vapor",
-      "breakpoints": true
-    },
-    {
-      "idx": 6,
-      "version": "7",
-      "when": 1752951519673,
-      "tag": "0006_overjoyed_anthem",
-      "breakpoints": true
-    },
-    {
-      "idx": 7,
-      "version": "7",
-      "when": 1752951550615,
-      "tag": "0007_furry_gateway",
-      "breakpoints": true
-    },
-    {
-      "idx": 8,
-      "version": "7",
-      "when": 1752952093853,
-      "tag": "0008_cloudy_vivisector",
+      "when": 1753136577062,
+      "tag": "0000_icy_phil_sheldon",
       "breakpoints": true
     }
   ]

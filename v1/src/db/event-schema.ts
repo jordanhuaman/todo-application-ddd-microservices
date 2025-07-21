@@ -1,6 +1,6 @@
 import { integer, pgSchema, timestamp, varchar } from "drizzle-orm/pg-core";
+import { eventSchema } from "./user-schema";
 
-const eventSchema = pgSchema("event-source");
 
 export const evenTable = eventSchema.table("events", {
   id: varchar().primaryKey(),

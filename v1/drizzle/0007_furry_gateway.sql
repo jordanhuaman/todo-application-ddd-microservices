@@ -1,2 +1,0 @@
-ALTER TABLE "user-management"."todo" ALTER COLUMN "user_id" SET NOT NULL;--> statement-breakpoint
-ALTER TABLE "user-management"."todo" ADD CONSTRAINT "todo_user_id_users_id_fk" FOREIGN KEY ("user_id") REFERENCES "user-management"."users"("id") ON DELETE no action ON UPDATE no action;

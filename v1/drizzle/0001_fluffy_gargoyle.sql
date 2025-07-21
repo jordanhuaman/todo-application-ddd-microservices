@@ -1,1 +1,0 @@
-ALTER TABLE "user-management"."users" ADD COLUMN "gender" varchar(10) NOT NULL;

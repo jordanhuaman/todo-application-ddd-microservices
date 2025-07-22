@@ -1,4 +1,4 @@
-export class TodoId {
+export class UUID {
   private readonly value: string;
 
   constructor(value: string) {

@@ -1,11 +1,11 @@
 import { DateTime } from "./DateTime";
 import { TodoCreateAt } from "./TodoCreateAt";
-import { TodoId } from "./TodoId";
+import { UUID } from "../../shared/domain/UUID";
 import { TodoUpdateAt } from "./TodoUpdateAt";
-import { TODO_STATUS } from "./Todo.types";
+import { TODO_STATUS } from "../../shared/domain/Todo.types";
 
 export class Todo {
-  private readonly todoId: TodoId;
+  private readonly todoId: UUID;
   private todoCreateAt: TodoCreateAt;
   private todoUpdateAt: TodoUpdateAt;
   private title: string;
@@ -16,7 +16,7 @@ export class Todo {
   private completePercentage:number ;
 
   constructor(
-    todoId: TodoId,
+    todoId: UUID,
     title: string,
     description: string,
     userId: string,
@@ -44,7 +44,7 @@ export class Todo {
     userId: string,
     date: string){
     const todo = new Todo(
-      new TodoId(id),
+      new UUID(id),
       title,
       description,
       userId,

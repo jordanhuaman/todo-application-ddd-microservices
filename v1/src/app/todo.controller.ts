@@ -9,8 +9,8 @@ todoapi.get("/", (c) => c.json({ message: "Welcome to the Todo API!" }));
 todoapi.post("/", async (c) => {
   const todoData = await c.req.json() as TODO_TYPE_DB;
 
-  const { title, description, user } = todoData;
-  const futureTodo =await SERVICE_CONTAINER.todo.create(title, description, user as string);
+  const { title, description, user, date, time, completePercentage, state } = todoData;
+  const futureTodo = await SERVICE_CONTAINER.todo.create(title, description, user as string, date);
 
   return c.json({ message: "Todo created successfully", data: todoData });
 })

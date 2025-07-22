@@ -11,6 +11,7 @@ export const SERVICE_CONTAINER = {
     create: (
       title: string,
       description: string,
-      userId: string) => new CreateTodoUseCase(implementation).execute(title, description, userId)
+      userId: string,
+      date: string) => new CreateTodoUseCase(implementation).execute(title, description, userId,date,)
   }
 }

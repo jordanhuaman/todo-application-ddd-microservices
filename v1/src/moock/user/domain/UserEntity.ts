@@ -1,5 +1,4 @@
 import { Name } from "drizzle-orm";
-import { Todo } from "../todo/Todo";
 import { Age } from "./Age";
 import { Email } from "./Email";
 import { Gender } from "./Gender";
@@ -8,7 +7,6 @@ import { Id } from "./Id";
 export class User {
 
   private readonly id: Id;
-  private notes: Set<Todo>;
   private name: Name;
   private age: Age;
   private email: Email;
@@ -25,7 +23,6 @@ export class User {
     this.name = new Name(name);
     this.age = new Age(age);
     this.email = new Email(email);
-    this.notes = new Set<Todo>();
     this.gender = new Gender(gender);
   }
   getId(): Id {
@@ -42,10 +39,6 @@ export class User {
 
   getEmail(): Email {
     return this.email;
-  }
-
-  getNotes(): Set<Todo> {
-    return this.notes;
   }
 
   getGender(): Gender {

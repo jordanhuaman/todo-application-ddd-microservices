@@ -1,6 +1,8 @@
+import { DateTime } from "./DateTime";
 import { TodoCreateAt } from "./TodoCreateAt";
 import { TodoId } from "./TodoId";
 import { TodoUpdateAt } from "./TodoUpdateAt";
+import { TODO_STATUS } from "./Todo.types";
 
 export class Todo {
   private readonly todoId: TodoId;
@@ -9,28 +11,46 @@ export class Todo {
   private title: string;
   private description: string;
   private userId: string;
+  private date: DateTime;
+  private status: TODO_STATUS;
+  private completePercentage:number ;
+
   constructor(
     todoId: TodoId,
     title: string,
     description: string,
     userId: string,
+    date: DateTime,
+    status: string,
+    completePercentage: number,
     todoCreateAt?: TodoCreateAt,
-    todoUpdateAt?: TodoUpdateAt,
-  ) {
+    todoUpdateAt?: TodoUpdateAt
+    ) {
     this.todoId = todoId;
     this.title = title;
     this.description = description;
     this.userId = userId;
     this.todoCreateAt = todoCreateAt || new TodoCreateAt(new Date().toISOString());
     this.todoUpdateAt = todoUpdateAt || new TodoUpdateAt(new Date().toISOString());
+    this.date = date;
+    this.status = status as TODO_STATUS;
+    this.completePercentage = completePercentage || 0;
   }
 
-  public static fromPrimitives(id: string, title:string, description: string, userId: string){
+  public static fromPrimitives(
+    id: string, 
+    title:string, 
+    description: string, 
+    userId: string,
+    date: string){
     const todo = new Todo(
       new TodoId(id),
       title,
       description,
-      userId
+      userId,
+      new DateTime(date),
+      TODO_STATUS.SCHEDULED,
+      0 
     )
 
     return todo;
@@ -59,4 +79,17 @@ export class Todo {
   getUserId(): string {
     return this.userId;
   }
+
+  getDate(): DateTime {
+    return this.date;
+  }
+
+  getStatus(): TODO_STATUS {
+    return this.status;
+  }
+
+  getCompletePercentage(): number {
+    return this.completePercentage;
+  }
+
 }

@@ -15,8 +15,10 @@
     "typescript": "^5"
   },
   "dependencies": {
+    "@apollo/server": "^5.2.0",
     "dotenv": "^17.2.3",
     "drizzle-orm": "^1.0.0-beta.2-58a4521",
+    "graphql": "^16.12.0",
     "postgres": "^3.4.7",
     "uuid": "^13.0.0"
   }

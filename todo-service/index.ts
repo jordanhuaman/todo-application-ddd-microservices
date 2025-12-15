@@ -1,23 +1,37 @@
 import { startStandaloneServer } from "@apollo/server/standalone";
-import {resolvers, typedefs } from "./src/shared/infraestructure/graphql/index"
-// import { drizzle } from 'drizzle-orm/postgres-js'
-// import postgres from 'postgres'
-
 import { ApolloServer } from "@apollo/server";
 
-// async function main() {
-//   const databaseConnection = process.env.DATABASE_URL;
-//   if (!databaseConnection) {
-//     throw new Error("DATABASE_URL is not defined");
-//   }
-//   const client = postgres(databaseConnection);
-//   const db = drizzle({ client });
-// }
+import { drizzle } from "drizzle-orm/postgres-js";
+import { UserController } from "./src/mook/user/infraestructure/user-controller";
+import { UserRepositoryImpl } from "./src/mook/user/infraestructure/user-repository-impl";
 
-// main();
+
+const db = drizzle(process.env.DATABASE_URL!, {logger: true});
+const userRepositoryImpl = new UserRepositoryImpl(db);
+const userController = new UserController(userRepositoryImpl)
+
+
+const typedefs = `#graphql
+  type user{
+    id: String,
+    name: String,
+    age: Int,
+    email: String,
+    createAt: String,
+  }
+  type Query{
+    testUsers: [user]
+  }
+`
+const resolvers = {
+  Query: {
+    testUsers: ()=> userController.getAllUsers(),
+  }
+}
+
 
 const server = new ApolloServer({
-  typeDefs: typedefs,
+  typeDefs:   typedefs,
   resolvers: resolvers,
 })
 

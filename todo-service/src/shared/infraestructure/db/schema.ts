@@ -1,4 +1,4 @@
-import { boolean, integer, pgEnum, pgTable, primaryKey, timestamp, uuid, varchar } from "drizzle-orm/pg-core";
+import { boolean, integer, pgEnum, pgTable, timestamp, uuid, varchar } from "drizzle-orm/pg-core";
 import { defineRelations } from "drizzle-orm";
 
 export const userStatusEnum = pgEnum("status", ["CREATED", "DELETED", "BANNED"]);
@@ -15,7 +15,7 @@ export const usersTable = pgTable("users", {
 
 });
 
-export const profleTable = pgTable("profile", {
+export const profileTable = pgTable("profile", {
   id: integer().primaryKey(),
   imageUrl: varchar({ length: 512 }),
   createAt: timestamp({ withTimezone: true }).defaultNow().notNull(),
@@ -43,10 +43,10 @@ export const favoriteCollaborators = pgTable("favorite_collaborators", {
 )
 
 
-const relations = defineRelations({ usersTable, profleTable, userSharedInformation, favoriteCollaborators }, (r) => ({
-  profleTable: {
+const relations = defineRelations({ usersTable, profileTable, userSharedInformation, favoriteCollaborators }, (r) => ({
+  profileTable: {
     user: r.one.usersTable({
-      from: r.profleTable.userId,
+      from: r.profileTable.userId,
       to: r.usersTable.id,
     }),
   },

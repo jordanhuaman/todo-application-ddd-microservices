@@ -15,6 +15,8 @@ export const usersTable = pgTable("users", {
 
 });
 
+export type userTypeSchema = typeof usersTable.$inferInsert;
+
 export const profileTable = pgTable("profile", {
   id: integer().primaryKey(),
   imageUrl: varchar({ length: 512 }),

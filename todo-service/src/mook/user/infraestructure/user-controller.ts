@@ -1,15 +1,26 @@
+import { GetAllUsersUseCase } from "../application/get-all-users.usecase";
+import { CreateUserUseCase } from "../application/create-user.usecase";
+import { tryCatch as customTryCatch } from "../../../shared/domain/custom_try-catch";
 import type { userRepository } from "./user-repository";
-import { tryCatch as customTryCatch } from "../../../shared/domain/custm_try-catch";
+
 export class UserController {
-  constructor(readonly userRepository: userRepository) { }
+  private getAllUsersUseCase: GetAllUsersUseCase;
+  private createUserUseCase: CreateUserUseCase;
+
+  constructor(readonly userRepository: userRepository) {
+    this.getAllUsersUseCase = new GetAllUsersUseCase(userRepository);
+    this.createUserUseCase = new CreateUserUseCase(userRepository);
+  }
 
   async getAllUsers() {
-    return this.userRepository.getallUsers();
+    return this.getAllUsersUseCase.execute();
   }
-  async createUser(data: { name: string; age: number; email: string }): Promise<string> {
-    const {data: result , error} = await customTryCatch(this.userRepository.createUser(data.name, data.age, data.email));
 
-    if (error){
+  async createUser(data: { name: string; age: number; email: string }): Promise<string> {
+    const { data: result, error } = await customTryCatch(
+      this.createUserUseCase.execute(data)
+    );
+    if (error) {
       throw new Error(`Error creating user`);
     }
     return result;

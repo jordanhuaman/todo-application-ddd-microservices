@@ -7,9 +7,11 @@ export class UserController {
   private getAllUsersUseCase: GetAllUsersUseCase;
   private createUserUseCase: CreateUserUseCase;
 
-  constructor(readonly userRepository: userRepository) {
+  constructor(
+    readonly userRepository: userRepository,
+    readonly eventBuss: any) {
     this.getAllUsersUseCase = new GetAllUsersUseCase(userRepository);
-    this.createUserUseCase = new CreateUserUseCase(userRepository);
+    this.createUserUseCase = new CreateUserUseCase(userRepository, eventBuss);
   }
 
   async getAllUsers() {

@@ -1,7 +1,7 @@
 import { GetAllUsersUseCase } from "../application/get-all-users.usecase";
 import { CreateUserUseCase } from "../application/create-user.usecase";
 import { tryCatch as customTryCatch } from "../../../shared/domain/custom_try-catch";
-import type { userRepository } from "./user-repository";
+import type { userRepository } from "../domain/user-repository";
 
 export class UserController {
   private getAllUsersUseCase: GetAllUsersUseCase;

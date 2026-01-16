@@ -1,4 +1,4 @@
-import type { userRepository } from "../infraestructure/user-repository";
+import type { userRepository } from "../domain/user-repository";
 import type { userDto } from "../domain/user";
 
 export class GetAllUsersUseCase {

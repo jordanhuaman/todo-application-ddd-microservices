@@ -1,4 +1,4 @@
-import type { userDto } from "../domain/user";
+import type { userDto } from "./user";
 
 export interface userRepository{
   getallUsers(): Promise<userDto[]>;

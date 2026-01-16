@@ -1,4 +1,4 @@
-import type { EventBus } from "./event-buss";
+import type { EventBus } from "../../../mook/user/domain/event-buss";
 import amqp from "amqplib";
 
 export class EventBussMQEventBuss implements EventBus {

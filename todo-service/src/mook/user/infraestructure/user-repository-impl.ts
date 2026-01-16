@@ -1,6 +1,6 @@
 import type { PostgresJsDatabase } from "drizzle-orm/postgres-js";
 import type { userDto } from "../domain/user";
-import type { userRepository } from "../infraestructure/user-repository";
+import type { userRepository } from "../domain/user-repository";
 import type postgres from "postgres";
 import type { EmptyRelations } from "drizzle-orm";
 import { usersTable } from "../../../shared/infraestructure/db/schema";

@@ -16,7 +16,8 @@ const typedefs = `#graphql
     createAt: String,
   }
   type Query{
-    testUsers: [user]
+    testUsers: [user],
+    getUserById(id: String): user
   }
   type Mutation{
     createUser(name: String, age: Int, email: String): String
@@ -25,6 +26,7 @@ const typedefs = `#graphql
 const resolvers = {
   Query: {
     testUsers: () => userController.getAllUsers(),
+    getUserById: (_: unknown, {id}:any) => userController.getUserById(id)
   },
   Mutation: {
     createUser: (_: unknown, {name, age, email}:any) => userController.createUser({ name, age, email })

@@ -10,11 +10,12 @@ import amqp from "amqplib";
 const connection = await amqp.connect("amqp://user:password@localhost");
 const channel = await connection.createChannel();
 const eventBuss = new EventBussMQEventBuss(channel);
-subscribeToUserEvents(eventBuss);
 
 
 const db = drizzle(process.env.DATABASE_URL!, { logger: true });
 const userRepositoryImpl = new UserRepositoryImpl(db);
 const userController = new UserController(userRepositoryImpl, eventBuss)
+subscribeToUserEvents(eventBuss, userRepositoryImpl);
+
 
 export { userController};

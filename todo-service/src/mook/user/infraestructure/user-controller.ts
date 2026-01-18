@@ -17,15 +17,13 @@ export class UserController {
   async getAllUsers() {
     return this.getAllUsersUseCase.execute();
   }
-  
+
   async getUserById(id: string) {
     return this.userRepository.getUserById(id);
   }
 
   async createUser(data: { name: string; age: number; email: string }): Promise<string> {
-    const { data: result, error } = await customTryCatch(
-      this.createUserUseCase.execute(data)
-    );
+    const { data: result, error } = await customTryCatch(this.createUserUseCase.execute(data));
     if (error) {
       throw new Error(`Error creating user`);
     }
